@@ -1,8 +1,7 @@
 xx1
-<<<<<<< HEAD
+
 main xx
 add in main
-=======
-
+AND
 xx++b1
->>>>>>> b1
+
