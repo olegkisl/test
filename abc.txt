@@ -1,4 +1,179 @@
 0 - text
 ee1
-added 2 by T.
+added 2 by T.nnnnnnnnnnnnnnnnnnnnnnnnnn
 added 3 by T.
+
+===from termimal, example of manual squash====
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ pwd
+/c/projects/test/test
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is up to date with 'origin/experiment'.
+
+nothing to commit, working tree clean
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is up to date with 'origin/experiment'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   abc.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git add abc.txt
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is up to date with 'origin/experiment'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   abc.txt
+
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git commit -m "edited abc.txt"
+[experiment de6eece] edited abc.txt
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is ahead of 'origin/experiment' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   abc.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git add abc.txt
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is ahead of 'origin/experiment' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   abc.txt
+
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git commit -m "second edit abc.txt"
+[experiment ddc7b21] second edit abc.txt
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is ahead of 'origin/experiment' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   abc.txt
+        modified:   m1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git add abc.txt m1.txt
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is ahead of 'origin/experiment' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   abc.txt
+        modified:   m1.txt
+
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git commit -m "third edit abc.txt, m1.txt"
+[experiment 17277f9] third edit abc.txt, m1.txt
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is ahead of 'origin/experiment' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git reset --soft HEAD~3 &&
+> git commit -m"attempt to combine commits"
+[experiment a041752] attempt to combine commits
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is ahead of 'origin/experiment' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   abc.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        filebyT.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git add abc.txt filebyT.txt
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is ahead of 'origin/experiment' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   abc.txt
+        new file:   filebyT.txt
+
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git commit -m "4th edit abc.txt, added filebyT.txt"
+[experiment 5098c1f] 4th edit abc.txt, added filebyT.txt
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 filebyT.txt
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git reset --hard HEAD~1
+HEAD is now at a041752 attempt to combine commits
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$ git status
+On branch experiment
+Your branch is ahead of 'origin/experiment' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+okislyuk@okislyuk-THINK MINGW64 /c/projects/test/test (experiment)
+$
